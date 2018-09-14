@@ -7,7 +7,7 @@ const path = require('path');
 // so that PathLocationStrategy can be used
 
 app.get('/*', function(req, res) {
-  res.SendFile(path.join(__dirname + '/dist/index.html'));
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
 });
 
 // If an incoming request uses
