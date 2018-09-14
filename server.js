@@ -1,4 +1,4 @@
-const express = require('express');
+/*const express = require('express');
 const app = express();
 
 const path = require('path');
@@ -15,16 +15,16 @@ app.get('/*', function(req, res) {
 // redirect that request to the
 // same url but with HTTPS
 
-const forceSSL = function() {
-  return function(req, res, next) {
-    if(req.headers['x-forwarded-proto'] !== 'https') {
-      return res.redirect(
-        ['https://', req.get('HOST'), req.url].join('')
-      );
-    }
-    next();
-  }
-}
+// const forceSSL = function() {
+//   return function(req, res, next) {
+//     if(req.headers['x-forwarded-proto'] !== 'https') {
+//       return res.redirect(
+//         ['https://', req.get('HOST'), req.url].join('')
+//       );
+//     }
+//     next();
+//   }
+// }
 
 // Instruct the app to use
 // the forceSSL middleware
@@ -39,4 +39,20 @@ app.use(express.static(__dirname + '/dist'));
 // Start the app by listening on the default
 // Heroku port
 
+app.listen(process.env.PORT || 8080);*/
+
+
+
+const express = require('express');
+const app = express();
+const path = require('path');
+
+app.use(express.static(__dirname + '/dist'));
+
 app.listen(process.env.PORT || 8080);
+
+//PathLocationStratergy
+
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
